@@ -7,6 +7,7 @@ const config: StorybookConfig = {
 
   // Optional
   core: {
+    disableWhatsNewNotifications: true,
     disableTelemetry: true,
   },
   addons: ['@storybook/addon-backgrounds', '@storybook/addon-controls'],
