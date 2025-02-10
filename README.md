@@ -12,7 +12,7 @@ It supports the following media:
 
 ## Installation
 
-Once version 1.0 is released, installation with npm will be supported:
+Once version 1.0 is released, installation with npm will be supported with
 ```bash
 npm i nftcdn-media-player
 ```
@@ -53,6 +53,30 @@ npm i nftcdn-media-player
 - `audio/*`: formats supported by browsers `<audio>` element
 - `application/pdf`: versions supported by [PDF.js](https://mozilla.github.io/pdf.js/)
 
+## Demoing with Storybook
+
+The Storybook is [available online from GitHub Pages](https://nftcdn.github.io/media-player).
+
+To run a local instance of the Storybook, run
+
+```bash
+npm run storybook
+```
+
+To build a production version of Storybook, run
+
+```bash
+npm run storybook:build
+```
+
+## Local Demo with `web-dev-server`
+
+```bash
+npm start
+```
+
+To run a local development server that serves the basic demo located in `demo/index.html`
+
 ## Linting and formatting
 
 To scan the project for linting and formatting errors, run
@@ -80,25 +104,3 @@ To run the tests in interactive watch mode run:
 ```bash
 npm run test:watch
 ```
-
-## Demoing with Storybook
-
-To run a local instance of Storybook for your component, run
-
-```bash
-npm run storybook
-```
-
-To build a production version of Storybook, run
-
-```bash
-npm run storybook:build
-```
-
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
