@@ -15,7 +15,7 @@ npm i nftcdn-media-player
   import 'nftcdn-media-player/nftcdn-media-player.js';
 </script>
 
-<nftcdn-media-player></nftcdn-media-player>
+<nftcdn-media-player src=URL type=MIME name=NAME></nftcdn-media-player>
 ```
 
 ## Linting and formatting
