@@ -14,8 +14,6 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Default: Story = {};
-
 export const Image: Story = {
   args: {
     src: 'ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm',

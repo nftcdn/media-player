@@ -4,7 +4,7 @@ import { NftcdnMediaPlayer } from '../src/NftcdnMediaPlayer.js';
 import '../src/nftcdn-media-player.js';
 
 describe('NftcdnMediaPlayer', () => {
-  it('attributes are undefined by default', async () => {
+  it('attributes are undefined by default and an error reported', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player></nftcdn-media-player>`,
     );
@@ -12,6 +12,9 @@ describe('NftcdnMediaPlayer', () => {
     expect(el.src).to.equal(undefined);
     expect(el.type).to.equal(undefined);
     expect(el.name).to.equal(undefined);
+    await expect(el).shadowDom.to.equal(
+      '<p>Error: nftcdn-media-player requires a "src" attribute.</p>',
+    );
   });
 
   it('can override the src via attribute', async () => {
