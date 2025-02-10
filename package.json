@@ -25,17 +25,20 @@
     "storybook:build": "tsc && npm run analyze -- --exclude dist && storybook build"
   },
   "dependencies": {
-    "lit": "^3.1.4"
+    "lit": "^3.1.4",
+    "whatwg-mimetype": "^4.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@open-wc/eslint-config": "^12.0.3",
     "@open-wc/testing": "^4.0.0",
     "@storybook/addon-a11y": "^7.6.20",
+    "@storybook/addon-backgrounds": "^7.6.20",
     "@storybook/addon-essentials": "^7.6.20",
     "@storybook/addon-links": "^7.6.20",
     "@storybook/web-components": "^7.6.20",
     "@types/mocha": "^10.0.10",
+    "@types/whatwg-mimetype": "^3.0.2",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.1",
     "@web/dev-server": "^0.4.6",
