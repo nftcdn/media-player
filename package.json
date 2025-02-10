@@ -2,7 +2,7 @@
   "name": "nftcdn-media-player",
   "description": "Webcomponent nftcdn-media-player following open-wc recommendations",
   "license": "MIT",
-  "author": "nftcdn-media-player",
+  "author": "NFTCDN LTD",
   "version": "0.0.0",
   "type": "module",
   "main": "dist/src/index.js",
