@@ -4,6 +4,7 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 
 ## Installation
 
+Once version 1.0 is released, installation with npm will be supported:
 ```bash
 npm i nftcdn-media-player
 ```
