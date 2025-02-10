@@ -4,15 +4,14 @@ import { NftcdnMediaPlayer } from '../src/NftcdnMediaPlayer.js';
 import '../src/nftcdn-media-player.js';
 
 describe('NftcdnMediaPlayer', () => {
-  it('has a default src and type', async () => {
+  it('attributes are undefined by default', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player></nftcdn-media-player>`,
     );
 
-    expect(el.src).to.equal(
-      'data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22/%3E',
-    );
-    expect(el.type).to.equal('image/svg+xml');
+    expect(el.src).to.equal(undefined);
+    expect(el.type).to.equal(undefined);
+    expect(el.name).to.equal(undefined);
   });
 
   it('can override the src via attribute', async () => {
@@ -35,12 +34,12 @@ describe('NftcdnMediaPlayer', () => {
     expect(el.type).to.equal('image/png');
   });
 
-  it('can override the alt via attribute', async () => {
+  it('can override the name via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
-      html`<nftcdn-media-player alt="Description"></nftcdn-media-player>`,
+      html`<nftcdn-media-player name="test"></nftcdn-media-player>`,
     );
 
-    expect(el.alt).to.equal('Description');
+    expect(el.name).to.equal('test');
   });
 
   it('passes the a11y audit', async () => {
