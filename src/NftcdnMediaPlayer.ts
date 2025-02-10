@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
@@ -12,7 +12,31 @@ export class NftcdnMediaPlayer extends LitElement {
 
   @property({ type: String }) name: string | undefined = undefined;
 
-  mediaType(): MediaType {
+  static styles = css`
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      white-space: normal;
+    }
+  `;
+
+  protected mediaType(): MediaType {
     const type = this.type ? this.type.trim() : undefined;
 
     if (type === undefined || type.startsWith('image/')) {
@@ -27,7 +51,7 @@ export class NftcdnMediaPlayer extends LitElement {
     return 'unknown';
   }
 
-  render() {
+  protected render() {
     if (this.src === undefined) {
       return html`<p>
         Error: nftcdn-media-player requires a "src" attribute.
@@ -48,7 +72,14 @@ export class NftcdnMediaPlayer extends LitElement {
         return html`<image src=${src} alt=${ifDefined(this.name)} />`;
 
       case 'html':
-        return html`<iframe src=${src} title=${ifDefined(this.name)}></iframe>`;
+        return html`<iframe
+          src=${src}
+          title=${ifDefined(this.name)}
+          marginwidth="0"
+          marginheight="0"
+          sandbox="allow-scripts allow-downloads allow-same-origin"
+          allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
+        ></iframe>`;
 
       case 'gltf':
         return html`<model-viewer
