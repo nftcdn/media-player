@@ -1,6 +1,14 @@
 # \<nftcdn-media-player>
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
+This is a generic media viewer/player [web component](https://www.webcomponents.org/introduction) originally designed to display Cardano NFTs.
+
+It supports the following media:
+- Images
+- Videos (upcoming)
+- Audio files (upcoming)
+- Web documents (HTML/Javascript/Css)
+- 3D models
+- PDF documents (upcoming)
 
 ## Installation
 
@@ -18,6 +26,28 @@ npm i nftcdn-media-player
 
 <nftcdn-media-player src=URL type=MIME name=NAME></nftcdn-media-player>
 ```
+
+### Attributes
+| Name | Requirement | Default   | Description |
+|:-----|:------------|:----------|:------------|
+|`src` | mandatory   | undefined | media URL   |
+|`type`| mandatory except for images  | undefined | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml) |
+|`name` | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined | unique media name   |
+
+## Features
+- Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
+- IPFS & Arweave URLs support
+- Data URLs support (for example used in on-chain NFTs)
+
+### Supported media types
+- `image/*`: formats supported by browsers `<img>` element
+- `text/html`: HTML/Javascript/Css versions supported by browsers
+- `model/gltf+json, model/gltf-binary`: versions supported by [`<model-viewer>`](https://modelviewer.dev/)
+
+### Planned media types
+- `video/*`: formats supported by browsers `<video>` element
+- `audio/*`: formats supported by browsers `<audio>` element
+- `application/pdf`: versions supported by [PDF.js](https://mozilla.github.io/pdf.js/)
 
 ## Linting and formatting
 
