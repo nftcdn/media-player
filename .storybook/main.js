@@ -9,7 +9,7 @@ const config = {
     disableTelemetry: true,
   },
 
-  addons: ['@storybook/addon-backgrounds']
+  addons: ['@storybook/addon-backgrounds', '@storybook/addon-controls']
 };
 
 export default config;
