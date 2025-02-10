@@ -33,11 +33,15 @@ npm i nftcdn-media-player
 |`src` | mandatory   | undefined | media URL   |
 |`type`| mandatory except for images  | undefined | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml) |
 |`name` | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined | unique media name   |
+|`ipfsgateway`* | optional   | https://ipfs.io | IPFS gateway  |
+|`argateway`* | optional   | https://arweave.net | Arweave gateway  |
+
+\* JavaScript properties are `ipfsGateway` and `arGateway`.
 
 ## Features
-- Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
-- IPFS & Arweave URLs support
+- IPFS & Arweave URLs support (including gateway setting)
 - Data URLs support (for example used in on-chain NFTs)
+- Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
 
 ### Supported media types
 - `image/*`: formats supported by browsers `<img>` element

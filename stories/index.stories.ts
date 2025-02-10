@@ -19,6 +19,7 @@ export const IpfsImage: Story = {
   args: {
     src: 'ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm',
     name: 'SpaceBud #9930',
+    ipfsGateway: 'https://ipfs.io',
   },
 };
 

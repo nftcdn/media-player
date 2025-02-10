@@ -12,6 +12,10 @@ export class NftcdnMediaPlayer extends LitElement {
 
   @property({ type: String }) name: string | undefined = undefined;
 
+  @property({ type: String }) ipfsGateway: string = 'https://ipfs.io';
+
+  @property({ type: String }) arGateway: string = 'https://arweave.net';
+
   static styles = css`
     img {
       width: 100%;
@@ -62,9 +66,9 @@ export class NftcdnMediaPlayer extends LitElement {
     const type = this.mediaType();
 
     if (src.includes('ipfs')) {
-      src = this.src.replace(/^(ipfs[:/]+)+/, 'https://ipfs.io/ipfs/');
+      src = this.src.replace(/^(ipfs[:/]+)+/, `${this.ipfsGateway}/ipfs/`);
     } else if (src.includes('ar://')) {
-      src = this.src.replace(/ar:\/\//, 'https://arweave.net/');
+      src = this.src.replace(/ar:\/\//, `${this.arGateway}/`);
     }
 
     switch (type) {
