@@ -54,6 +54,11 @@
     "tslib": "^2.6.3",
     "typescript": "^5.5.4"
   },
+  "overrides": {
+    "node-fetch@2.x": {
+      "whatwg-url": "14.x"
+    }
+  },
   "customElements": "custom-elements.json",
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
