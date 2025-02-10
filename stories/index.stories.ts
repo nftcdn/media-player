@@ -30,6 +30,14 @@ export const ArweaveImage: Story = {
   },
 };
 
+export const DataUriImage: Story = {
+  name: 'WebP Image Data URL',
+  args: {
+    src: 'data:image/webp;base64,UklGRmIBAABXRUJQVlA4TFUBAAAvg8PgAGegKrIN6t4IngF8KyCZ1iqooaCRpOYF9CIDAWhALm66BSSgKADIiAh3ClmkktXTrgCb/wDA/x8HwgVXh1qrl7I5TyVGuoTFZ3qBQ9rWriiFFFJIIYUUUhiFFFJIYRR+sVvzfnw7ov8T0Pif//mf//mf//mf//mf//mf//n/G3kML6fmP/7jP/7jP/6rgozh4YYvYf7jP/7jP/7jv0rGGB4e1CXMf/zHf/zHf/xXyZjC/UPOf/zHf/zHf/xXq2jh7iHnP/7jP/7jP/6rN0zhdupr+FxzmP/4j//4j//4r1Zxy1Pz3W4vVf7jP/7jP/7jv/99fbgL92H+4z/+4z/+478ayS3nP/7jP/7jP/6rkbQ3If/xH//xH//x3/+vy6nX8BbmP/7jP/7jP/6rc2ynXsPbqfcw//Ef//Ef//FfJSO9hre7vYf5j//4j//4j//qDQA=',
+    name: 'AdaIdiot #9986',
+  },
+};
+
 export const Html: Story = {
   name: 'HTML + Javascript',
   args: {
