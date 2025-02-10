@@ -14,10 +14,17 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj;
 
-export const Image: Story = {
+export const IpfsImage: Story = {
   args: {
     src: 'ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm',
-    name: 'SpaceBud',
+    name: 'SpaceBud #9930',
+  },
+};
+
+export const ArweaveImage: Story = {
+  args: {
+    src: 'ar://0kN8jQ2ZmJsaJSnsYy6vFGfg5lLRdpoJRLiToTazypk',
+    name: 'SpaceBud #99',
   },
 };
 
