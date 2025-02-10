@@ -15,6 +15,7 @@ export default meta;
 type Story = StoryObj;
 
 export const IpfsImage: Story = {
+  name: 'PNG Image on IPFS',
   args: {
     src: 'ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm',
     name: 'SpaceBud #9930',
@@ -22,6 +23,7 @@ export const IpfsImage: Story = {
 };
 
 export const ArweaveImage: Story = {
+  name: 'PNG Image on Arweave',
   args: {
     src: 'ar://0kN8jQ2ZmJsaJSnsYy6vFGfg5lLRdpoJRLiToTazypk',
     name: 'SpaceBud #99',
@@ -29,17 +31,19 @@ export const ArweaveImage: Story = {
 };
 
 export const Html: Story = {
+  name: 'HTML + Javascript',
   args: {
     src: 'ipfs://QmTZ9g8rgMjcKp2357cJR4brgKTKQDWzbKsP2TAumKrfHy',
     type: 'text/html',
-    name: 'PXL',
+    name: 'PXL#1876',
   },
 };
 
 export const Gltf: Story = {
+  name: 'glTF 3D Model',
   args: {
     src: 'ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV',
     type: 'model/gltf-binary',
-    name: 'Knitties',
+    name: 'Knitties Sudo cNFTcon2021 #0099',
   },
 };
