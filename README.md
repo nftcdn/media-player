@@ -60,13 +60,6 @@ To build a production version of Storybook, run
 npm run storybook:build
 ```
 
-
-## Tooling configs
-
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
-
-If you customize the configuration a lot, you can consider moving them to individual files.
-
 ## Local Demo with `web-dev-server`
 
 ```bash
