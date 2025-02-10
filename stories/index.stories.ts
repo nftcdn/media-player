@@ -17,7 +17,7 @@ type Story = StoryObj;
 export const Image: Story = {
   args: {
     src: 'ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm',
-    alt: 'SpaceBud',
+    name: 'SpaceBud',
   },
 };
 
@@ -25,7 +25,7 @@ export const Html: Story = {
   args: {
     src: 'ipfs://QmTZ9g8rgMjcKp2357cJR4brgKTKQDWzbKsP2TAumKrfHy',
     type: 'text/html',
-    alt: 'PXLz',
+    name: 'PXL',
   },
 };
 
@@ -33,5 +33,6 @@ export const Gltf: Story = {
   args: {
     src: 'ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV',
     type: 'model/gltf-binary',
+    name: 'Knitties',
   },
 };
