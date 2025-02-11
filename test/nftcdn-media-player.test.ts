@@ -17,7 +17,7 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
-  it('can override the src via attribute', async () => {
+  it('can set the media URL via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
         src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
@@ -29,7 +29,7 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
-  it('can override the type via attribute', async () => {
+  it('can set the media/mime type via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player type="image/png"></nftcdn-media-player>`,
     );
@@ -37,7 +37,7 @@ describe('NftcdnMediaPlayer', () => {
     expect(el.type).to.equal('image/png');
   });
 
-  it('can override the name via attribute', async () => {
+  it('can set the name via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player name="test"></nftcdn-media-player>`,
     );
@@ -45,11 +45,122 @@ describe('NftcdnMediaPlayer', () => {
     expect(el.name).to.equal('test');
   });
 
+  it('supports IPFS URLs', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmWmHHhb2ts8vsRqoFyg3unVKK9j1cmQLmVpEtsAGFDmLY"
+      ></nftcdn-media-player>`,
+    );
+
+    expect(el).shadowDom.to.equal(`
+      <img src="https://ipfs.io/ipfs/QmWmHHhb2ts8vsRqoFyg3unVKK9j1cmQLmVpEtsAGFDmLY" />
+    `);
+  });
+
+  it('supports Arweave URLs', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ar://0kN8jQ2ZmJsaJSnsYy6vFGfg5lLRdpoJRLiToTazypk"
+      ></nftcdn-media-player>`,
+    );
+
+    expect(el).shadowDom.to.equal(`
+      <img src="https://arweave.net/0kN8jQ2ZmJsaJSnsYy6vFGfg5lLRdpoJRLiToTazypk" />
+    `);
+  });
+
+  it('can override the IPFS gateway via attribute', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        ipfsgateway="https://ipfs.blockfrost.dev"
+      ></nftcdn-media-player>`,
+    );
+
+    expect(el.ipfsGateway).to.equal('https://ipfs.blockfrost.dev');
+  });
+
+  it('can override the Arweave gateway via attribute', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        argateway="https://metapaths.ar.io/"
+      ></nftcdn-media-player>`,
+    );
+
+    expect(el.arGateway).to.equal('https://metapaths.ar.io/');
+  });
+
+  it('renders images', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+      ></nftcdn-media-player>`,
+    );
+    await expect(el).shadowDom.to.equal(
+      '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" />',
+    );
+  });
+
+  it('renders HTML documents', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="data:text/html,%3Chtml%3EHello%3C%2Fhtml%3E"
+        type="text/html"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal('<iframe></iframe>', {
+      ignoreAttributes: ['allow', 'sandbox', 'src'],
+    });
+  });
+
+  it('renders glTF 3D models', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV"
+        type="model/gltf-binary"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal('<model-viewer></model-viewer>', {
+      ignoreAttributes: [
+        'src',
+        'ar',
+        'auto-rotate',
+        'autoplay',
+        'camera-controls',
+        'ar-status',
+        'ar-modes',
+      ],
+    });
+  });
+
+  it('renders unknown media as links', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="data:unknown/type;base64,"
+        type="unknown/type"
+        name="unknown"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal(
+      '<a href="data:unknown/type;base64,">unknown</a>',
+    );
+  });
+
+  it('renders unknown and unnamed media as links', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="data:unknown/type;base64,"
+        type="unknown/type"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal('<a href="data:unknown/type;base64,"></a>', {
+      ignoreChildren: ['a'],
+    });
+  });
+
   it('passes the a11y audit', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player></nftcdn-media-player>`,
     );
-
     await expect(el).shadowDom.to.be.accessible();
   });
 });
