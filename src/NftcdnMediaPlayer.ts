@@ -79,8 +79,6 @@ export class NftcdnMediaPlayer extends LitElement {
         return html`<iframe
           src=${src}
           title=${ifDefined(this.name)}
-          marginwidth="0"
-          marginheight="0"
           sandbox="allow-scripts allow-downloads allow-same-origin"
           allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
         ></iframe>`;
