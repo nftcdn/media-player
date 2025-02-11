@@ -92,11 +92,11 @@ describe('NftcdnMediaPlayer', () => {
   it('renders images', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
-        src="data:image/gif;base64,R0lGODlhAQABAAAAACw="
+        src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
       ></nftcdn-media-player>`,
     );
     await expect(el).shadowDom.to.equal(
-      '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" />',
+      '<img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" />',
     );
   });
 
@@ -157,9 +157,33 @@ describe('NftcdnMediaPlayer', () => {
     });
   });
 
-  it('passes the a11y audit', async () => {
+  it('passes the a11y audit with images', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
-      html`<nftcdn-media-player></nftcdn-media-player>`,
+      html`<nftcdn-media-player
+        src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+        name="Tiny GIF"
+      ></nftcdn-media-player>`,
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it('passes the a11y audit with HTML documents', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="data:text/html,%3Chtml%3EHello%3C%2Fhtml%3E"
+        type="text/html"
+        name="Hello"
+      ></nftcdn-media-player>`,
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it('passes the a11y audit with glTF 3D models', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV"
+        type="model/gltf-binary"
+      ></nftcdn-media-player>`,
     );
     await expect(el).shadowDom.to.be.accessible();
   });
