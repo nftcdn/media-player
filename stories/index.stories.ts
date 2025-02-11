@@ -24,10 +24,10 @@ export const IpfsImage: Story = {
 };
 
 export const ArweaveImage: Story = {
-  name: 'PNG Image on Arweave',
+  name: 'JPEG Image on Arweave',
   args: {
-    src: 'ar://0kN8jQ2ZmJsaJSnsYy6vFGfg5lLRdpoJRLiToTazypk',
-    name: 'SpaceBud #99',
+    src: 'ar://RlFSFLk7rigcJScelZC7AWpibfzqSCGB2bq1eN-s21g',
+    name: 'A Day at the Lake: Amoeba #2',
   },
 };
 
@@ -67,7 +67,7 @@ export const Html: Story = {
 export const Gltf: Story = {
   name: 'glTF 3D Model',
   args: {
-    src: 'ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV',
+    src: 'https://asset1dszryl629g5d8vxzz2wad3wjwuv5hqkajekd3x.cardano.nftcdn.io/files/0/?tk=9RDUTiJ-6uOaEnxrg5e44smGPVb2beJWp3uvuM1KyiU',
     type: 'model/gltf-binary',
     name: 'Knitties Sudo cNFTcon2021 #0099',
   },
