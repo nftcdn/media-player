@@ -64,8 +64,17 @@ export const Html: Story = {
   },
 };
 
-export const Gltf: Story = {
-  name: 'glTF 3D Model',
+export const GltfJson: Story = {
+  name: 'model/gltf+json',
+  args: {
+    src: 'https://asset13repnu36tdvjmmqvj47r4ve0xyx0rr48kv2u2l.cardano.nftcdn.io/files/1/?tk=NBoxtRkYsqOxD0b8Feg4s4yrd4RShrY2axuDaTWvc04',
+    type: 'model/gltf+json',
+    name: 'infl₳D₳bles - Dizzy Sailing',
+  },
+};
+
+export const GltfBinary: Story = {
+  name: 'model/gltf-binary',
   args: {
     src: 'https://asset1dszryl629g5d8vxzz2wad3wjwuv5hqkajekd3x.cardano.nftcdn.io/files/0/?tk=9RDUTiJ-6uOaEnxrg5e44smGPVb2beJWp3uvuM1KyiU',
     type: 'model/gltf-binary',
