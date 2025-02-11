@@ -107,9 +107,13 @@ describe('NftcdnMediaPlayer', () => {
         type="text/html"
       ></nftcdn-media-player>`,
     );
-    expect(el).shadowDom.to.equal('<iframe></iframe>', {
-      ignoreAttributes: ['allow', 'sandbox', 'src'],
-    });
+    expect(el).shadowDom.to.equal(
+      `<iframe
+          src="data:text/html,%3Chtml%3EHello%3C%2Fhtml%3E"
+          sandbox="allow-scripts allow-downloads allow-same-origin"
+          allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
+      ></iframe>`,
+    );
   });
 
   it('renders glTF 3D models', async () => {
@@ -119,17 +123,19 @@ describe('NftcdnMediaPlayer', () => {
         type="model/gltf-binary"
       ></nftcdn-media-player>`,
     );
-    expect(el).shadowDom.to.equal('<model-viewer></model-viewer>', {
-      ignoreAttributes: [
-        'src',
-        'ar',
-        'auto-rotate',
-        'autoplay',
-        'camera-controls',
-        'ar-status',
-        'ar-modes',
-      ],
-    });
+    expect(el).shadowDom.to.equal(
+      `<model-viewer
+          ar
+          auto-rotate
+          autoplay="true"
+          camera-controls
+          ar-status="not-presenting"
+          ar-modes="webxr scene-viewer quick-look"
+      ></model-viewer>`,
+      {
+        ignoreAttributes: ['src'],
+      },
+    );
   });
 
   it('renders unknown media as links', async () => {
