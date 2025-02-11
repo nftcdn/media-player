@@ -31,11 +31,19 @@ export const ArweaveImage: Story = {
   },
 };
 
-export const DataUriImage: Story = {
+export const DataUriWebPImage: Story = {
   name: 'WebP Image Data URL',
   args: {
     src: 'data:image/webp;base64,UklGRmIBAABXRUJQVlA4TFUBAAAvg8PgAGegKrIN6t4IngF8KyCZ1iqooaCRpOYF9CIDAWhALm66BSSgKADIiAh3ClmkktXTrgCb/wDA/x8HwgVXh1qrl7I5TyVGuoTFZ3qBQ9rWriiFFFJIIYUUUhiFFFJIYRR+sVvzfnw7ov8T0Pif//mf//mf//mf//mf//mf//n/G3kML6fmP/7jP/7jP/6rgozh4YYvYf7jP/7jP/7jv0rGGB4e1CXMf/zHf/zHf/xXyZjC/UPOf/zHf/zHf/xXq2jh7iHnP/7jP/7jP/6rN0zhdupr+FxzmP/4j//4j//4r1Zxy1Pz3W4vVf7jP/7jP/7jv/99fbgL92H+4z/+4z/+478ayS3nP/7jP/7jP/6rkbQ3If/xH//xH//x3/+vy6nX8BbmP/7jP/7jP/6rc2ynXsPbqfcw//Ef//Ef//FfJSO9hre7vYf5j//4j//4j//qDQA=',
     name: 'AdaIdiot #9986',
+  },
+};
+
+export const DataUriSVGImage: Story = {
+  name: 'SVG Image Data URL',
+  args: {
+    src: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyODAiIGhlaWdodD0iNDUwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRkZGRkZGIi8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTQwIiByPSIxMjAiIGZpbGw9IiNGRjE0OTMiLz48dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBzdHlsZT0iZm9udDo4MDAgMjRwdCBzYW5zLXNlcmlmIiB4PSIxNDAiIHk9IjQxMCI+Q2FyZGFub1RyZWVzPC90ZXh0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHN0eWxlPSJmb250OjgwMCAyNHB0IHNhbnMtc2VyaWYiIHg9IjE0MCIgeT0iNDQwIj4jMDQyMzwvdGV4dD48cGF0aCBmaWxsPSIjRkYwMEZGIiBkPSJNMTM0IDM4MHExMi00OSA2LTE1NS0yMS0xMDItMTA1LTM4IDIxLTIyIDQ2LTI5LTE1LTgtMjMtMzYgMTUgMzMgMzAgMzQgNDEgMiA1NiA2MiA4LTM5LTIyLTE0MSAxMSAyMyAxNiA0MiAxNi0zOCA5OC00MS05MSAxMC05NCA0NSAwIDMxIDEyIDc2IDIzLTM0IDk1LTQ3LTkxIDI0LTk0IDYwIDIgMTA4IDE5IDE2OHoiLz48L3N2Zz4K',
+    name: 'CardanoTrees 0423',
   },
 };
 
