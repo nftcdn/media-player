@@ -39,11 +39,19 @@ export const DataUriWebPImage: Story = {
   },
 };
 
-export const DataUriSVGImage: Story = {
+export const DataUriSvgImage: Story = {
   name: 'SVG Image Data URL',
   args: {
     src: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyODAiIGhlaWdodD0iNDUwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjRkZGRkZGIi8+PGNpcmNsZSBjeD0iMTQwIiBjeT0iMTQwIiByPSIxMjAiIGZpbGw9IiNGRjE0OTMiLz48dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBzdHlsZT0iZm9udDo4MDAgMjRwdCBzYW5zLXNlcmlmIiB4PSIxNDAiIHk9IjQxMCI+Q2FyZGFub1RyZWVzPC90ZXh0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHN0eWxlPSJmb250OjgwMCAyNHB0IHNhbnMtc2VyaWYiIHg9IjE0MCIgeT0iNDQwIj4jMDQyMzwvdGV4dD48cGF0aCBmaWxsPSIjRkYwMEZGIiBkPSJNMTM0IDM4MHExMi00OSA2LTE1NS0yMS0xMDItMTA1LTM4IDIxLTIyIDQ2LTI5LTE1LTgtMjMtMzYgMTUgMzMgMzAgMzQgNDEgMiA1NiA2MiA4LTM5LTIyLTE0MSAxMSAyMyAxNiA0MiAxNi0zOCA5OC00MS05MSAxMC05NCA0NSAwIDMxIDEyIDc2IDIzLTM0IDk1LTQ3LTkxIDI0LTk0IDYwIDIgMTA4IDE5IDE2OHoiLz48L3N2Zz4K',
     name: 'CardanoTrees 0423',
+  },
+};
+
+export const GifImage: Story = {
+  name: 'GIF Image with NFTCDN',
+  args: {
+    src: 'https://asset1a39s8ugsy80gd0g3zt5tdy4n8nerspyccwd8au.cardano.nftcdn.io/image?tk=gxy3wANwfEc6EomYQBLsL5shUl-BrUYFO4bfH01dZmU',
+    name: 'Satashi Naclaymoto - Clay Mates 0',
   },
 };
 
