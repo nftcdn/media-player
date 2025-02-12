@@ -55,12 +55,21 @@ export const GifImage: Story = {
   },
 };
 
-export const Html: Story = {
-  name: 'text/html',
+export const IpfsHtml: Story = {
+  name: 'text/html (IPFS)',
   args: {
     src: 'ipfs://QmTZ9g8rgMjcKp2357cJR4brgKTKQDWzbKsP2TAumKrfHy',
     type: 'text/html',
     name: 'PXL#1876',
+  },
+};
+
+export const NftcdnHtml: Story = {
+  name: 'text/html (NFTCDN)',
+  args: {
+    src: 'https://asset15ww77n3qdp64estz23px26z6quek25p82a4cje.cardano.nftcdn.io/files/0/?tk=wWu0ePP5vYSHcnFQvowu2aMpIN1MSBxRi_k-hA3batE',
+    type: 'text/html',
+    name: 'CardanoTrees 0423',
   },
 };
 
