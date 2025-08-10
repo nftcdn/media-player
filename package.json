@@ -52,7 +52,7 @@
     "prettier": "^3.3.3",
     "storybook": "^7.6.20",
     "tslib": "^2.6.3",
-    "typescript": "^5.5.4"
+    "typescript": "~5.5.4"
   },
   "overrides": {
     "node-fetch@2.x": {
