@@ -5,6 +5,7 @@ const meta: Meta = {
   title: 'NftcdnMediaPlayer',
   component: 'nftcdn-media-player',
   parameters: {
+    layout: 'fullscreen',
     backgrounds: {
       default: 'dark',
     },
