@@ -3,7 +3,7 @@ import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
 
-type MediaType = 'image' | 'html' | 'gltf' | 'text' | 'unknown';
+type MediaType = 'image' | 'html' | 'gltf' | 'text' | 'pdf' | 'unknown';
 
 export class NftcdnMediaPlayer extends LitElement {
   @property({ type: String }) src: string | undefined = undefined;
@@ -52,6 +52,9 @@ export class NftcdnMediaPlayer extends LitElement {
     if (type.startsWith('model/gltf')) {
       return 'gltf';
     }
+    if (type.startsWith('application/pdf')) {
+      return 'pdf';
+    }
     return 'unknown';
   }
 
@@ -93,6 +96,16 @@ export class NftcdnMediaPlayer extends LitElement {
           ar-status="not-presenting"
           ar-modes="webxr scene-viewer quick-look"
         ></model-viewer>`;
+
+      case 'pdf':
+        return html`<object
+          data=${src}
+          type="application/pdf"
+          name=${ifDefined(this.name)}
+          aria-label=${ifDefined(this.name)}
+          width="100%"
+          height="100%"
+        ></object>`;
 
       default:
         return html`<a href=${src}>${this.name ? this.name : src}</a>`;

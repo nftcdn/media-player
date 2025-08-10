@@ -138,6 +138,23 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
+  it('renders PDF documents', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu"
+        type="application/pdf"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal(
+      `<object
+          data="https://ipfs.io/ipfs/bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu"
+          type="application/pdf"
+          width="100%"
+          height="100%"
+      />`,
+    );
+  });
+
   it('renders unknown media as links', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
@@ -189,6 +206,17 @@ describe('NftcdnMediaPlayer', () => {
       html`<nftcdn-media-player
         src="ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV"
         type="model/gltf-binary"
+      ></nftcdn-media-player>`,
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it('passes the a11y audit with PDF documents', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu"
+        type="application/pdf"
+        name="Cardano Constitution v2.0"
       ></nftcdn-media-player>`,
     );
     await expect(el).shadowDom.to.be.accessible();

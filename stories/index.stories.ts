@@ -90,3 +90,12 @@ export const GltfBinary: Story = {
     name: 'Knitties Sudo cNFTcon2021 #0099',
   },
 };
+
+export const IpfsPdf: Story = {
+  name: 'application/pdf',
+  args: {
+    src: 'ipfs://bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu',
+    type: 'application/pdf',
+    name: 'Cardano Constitution v2.0',
+  },
+};
