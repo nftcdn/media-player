@@ -149,8 +149,6 @@ describe('NftcdnMediaPlayer', () => {
       `<object
           data="https://ipfs.io/ipfs/bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu"
           type="application/pdf"
-          width="100%"
-          height="100%"
       />`,
     );
   });

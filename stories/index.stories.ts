@@ -74,7 +74,7 @@ export const NftcdnHtml: Story = {
 };
 
 export const GltfJson: Story = {
-  name: 'model/gltf+json',
+  name: 'model/gltf+json (NFTCDN)',
   args: {
     src: 'https://asset13repnu36tdvjmmqvj47r4ve0xyx0rr48kv2u2l.cardano.nftcdn.io/files/1/?tk=NBoxtRkYsqOxD0b8Feg4s4yrd4RShrY2axuDaTWvc04',
     type: 'model/gltf+json',
@@ -83,7 +83,7 @@ export const GltfJson: Story = {
 };
 
 export const GltfBinary: Story = {
-  name: 'model/gltf-binary',
+  name: 'model/gltf-binary (NFTCDN)',
   args: {
     src: 'https://asset1dszryl629g5d8vxzz2wad3wjwuv5hqkajekd3x.cardano.nftcdn.io/files/0/?tk=9RDUTiJ-6uOaEnxrg5e44smGPVb2beJWp3uvuM1KyiU',
     type: 'model/gltf-binary',
@@ -92,10 +92,19 @@ export const GltfBinary: Story = {
 };
 
 export const IpfsPdf: Story = {
-  name: 'application/pdf',
+  name: 'application/pdf (IPFS)',
   args: {
     src: 'ipfs://bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu',
     type: 'application/pdf',
     name: 'Cardano Constitution v2.0',
+  },
+};
+
+export const IpfsText: Story = {
+  name: 'text/plain (IPFS)',
+  args: {
+    src: 'ipfs://QmSfJP86apVgZGYuawctKbasKg2G2bb7Zcm5m3MqKHsfEw',
+    type: 'text/plain',
+    name: 'Tao Te Ching – Verse 1',
   },
 };

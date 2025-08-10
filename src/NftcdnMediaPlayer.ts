@@ -38,6 +38,13 @@ export class NftcdnMediaPlayer extends LitElement {
       margin: 0;
       white-space: normal;
     }
+    object {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
   `;
 
   protected mediaType(): MediaType {
@@ -54,6 +61,9 @@ export class NftcdnMediaPlayer extends LitElement {
     }
     if (type.startsWith('application/pdf')) {
       return 'pdf';
+    }
+    if (type.startsWith('text/plain')) {
+      return 'text';
     }
     return 'unknown';
   }
@@ -98,13 +108,12 @@ export class NftcdnMediaPlayer extends LitElement {
         ></model-viewer>`;
 
       case 'pdf':
+      case 'text':
         return html`<object
           data=${src}
-          type="application/pdf"
+          type=${this.type}
           name=${ifDefined(this.name)}
           aria-label=${ifDefined(this.name)}
-          width="100%"
-          height="100%"
         ></object>`;
 
       default:
