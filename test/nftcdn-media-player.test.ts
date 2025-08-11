@@ -72,11 +72,15 @@ describe('NftcdnMediaPlayer', () => {
   it('can override the IPFS gateway via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
+        src="ipfs://QmWmHHhb2ts8vsRqoFyg3unVKK9j1cmQLmVpEtsAGFDmLY"
         ipfsgateway="https://ipfs.blockfrost.dev"
       ></nftcdn-media-player>`,
     );
 
     expect(el.ipfsGateway).to.equal('https://ipfs.blockfrost.dev');
+    expect(el).shadowDom.to.equal(`
+      <img src="https://ipfs.blockfrost.dev/ipfs/QmWmHHhb2ts8vsRqoFyg3unVKK9j1cmQLmVpEtsAGFDmLY" />
+    `);
   });
 
   it('can override the Arweave gateway via attribute', async () => {
