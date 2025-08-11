@@ -109,3 +109,12 @@ export const IpfsText: Story = {
     name: 'Tao Te Ching – Verse 1',
   },
 };
+
+export const Unknown: Story = {
+  name: 'unknown/type',
+  args: {
+    src: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    type: 'unknown/type',
+    name: 'Unknown',
+  },
+};
