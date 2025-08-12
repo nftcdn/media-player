@@ -172,6 +172,22 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
+  it('renders audio files', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
+        type="audio/mpeg"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal(
+      `<audio
+          src="https://ipfs.io/ipfs/QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
+          controls
+          preload="none"
+      />`,
+    );
+  });
+
   it('renders unknown media as links', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
@@ -245,6 +261,16 @@ describe('NftcdnMediaPlayer', () => {
         src="data:text/html,Hello World"
         type="text/plain"
         name="Hello World"
+      ></nftcdn-media-player>`,
+    );
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+  it('passes the a11y audit with audio files', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
+        type="audio/mpeg"
       ></nftcdn-media-player>`,
     );
     await expect(el).shadowDom.to.be.accessible();
