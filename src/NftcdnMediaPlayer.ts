@@ -3,7 +3,14 @@ import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
 
-type MediaType = 'image' | 'html' | 'gltf' | 'text' | 'pdf' | 'unknown';
+type MediaType =
+  | 'image'
+  | 'html'
+  | 'gltf'
+  | 'text'
+  | 'pdf'
+  | 'audio'
+  | 'unknown';
 
 export class NftcdnMediaPlayer extends LitElement {
   @property({ type: String }) src: string | undefined = undefined;
@@ -45,6 +52,13 @@ export class NftcdnMediaPlayer extends LitElement {
       padding: 0;
       margin: 0;
     }
+    audio {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
   `;
 
   protected mediaType(): MediaType {
@@ -65,6 +79,10 @@ export class NftcdnMediaPlayer extends LitElement {
     if (type.startsWith('text/plain')) {
       return 'text';
     }
+    if (type.startsWith('audio/')) {
+      return 'audio';
+    }
+
     return 'unknown';
   }
 
@@ -115,6 +133,9 @@ export class NftcdnMediaPlayer extends LitElement {
           name=${ifDefined(this.name)}
           aria-label=${ifDefined(this.name)}
         ></object>`;
+
+      case 'audio':
+        return html`<audio src=${src} controls preload="none"></audio>`;
 
       default:
         return html`<a href=${src}>${this.name ? this.name : src}</a>`;

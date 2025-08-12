@@ -92,7 +92,7 @@ export const GltfBinary: Story = {
   },
 };
 
-export const IpfsPdf: Story = {
+export const Pdf: Story = {
   name: 'application/pdf (IPFS)',
   args: {
     src: 'ipfs://bafkreigr35rigmubdmv5u7vr47d2tmvhq3i245uvtmzuciyexepcvaargu',
@@ -101,12 +101,39 @@ export const IpfsPdf: Story = {
   },
 };
 
-export const IpfsText: Story = {
+export const Text: Story = {
   name: 'text/plain (IPFS)',
   args: {
     src: 'ipfs://QmSfJP86apVgZGYuawctKbasKg2G2bb7Zcm5m3MqKHsfEw',
     type: 'text/plain',
     name: 'Tao Te Ching – Verse 1',
+  },
+};
+
+export const Wav: Story = {
+  name: 'audio/wav (NFTCDN)',
+  args: {
+    src: 'https://asset1yzm65ncsv6kafcnlusxfx05wjr2edradpjyu97.cardano.nftcdn.io/files/3?tk=zkr5qig7C2VFKidFaA8e0t3-v7qKf0UAgNg6GjlpPLY',
+    type: 'audio/wav',
+    name: 'Frigid Optics - Ouroboros',
+  },
+};
+
+export const Mp3: Story = {
+  name: 'audio/mpeg (IPFS)',
+  args: {
+    src: 'ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3',
+    type: 'audio/mpeg',
+    name: 'Rain of Hearts - Run',
+  },
+};
+
+export const Flac: Story = {
+  name: 'audio/x-flag (NFTCDN)',
+  args: {
+    src: 'https://asset1rqfpkpyfwe9xwlpuj56rh9gte56z3xjnte7xyl.cardano.nftcdn.io/files/4/?tk=U3FgweTMCB6Dnz8zmbOxVZrRCnekkaKdNMSkLkLLDEM',
+    type: 'audio/mpeg',
+    name: 'DJ Zero Action - Dreamskater',
   },
 };
 
