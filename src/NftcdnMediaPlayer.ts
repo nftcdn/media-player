@@ -10,6 +10,7 @@ type MediaType =
   | 'text'
   | 'pdf'
   | 'audio'
+  | 'video'
   | 'unknown';
 
 export class NftcdnMediaPlayer extends LitElement {
@@ -59,6 +60,13 @@ export class NftcdnMediaPlayer extends LitElement {
       padding: 0;
       margin: 0;
     }
+    video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
   `;
 
   protected mediaType(): MediaType {
@@ -82,7 +90,9 @@ export class NftcdnMediaPlayer extends LitElement {
     if (type.startsWith('audio/')) {
       return 'audio';
     }
-
+    if (type.startsWith('video/')) {
+      return 'video';
+    }
     return 'unknown';
   }
 
@@ -136,6 +146,16 @@ export class NftcdnMediaPlayer extends LitElement {
 
       case 'audio':
         return html`<audio src=${src} controls preload="none"></audio>`;
+
+      case 'video':
+        return html`<video
+          src=${src}
+          controls
+          autoplay="true"
+          muted="true"
+          loop="true"
+          playsinline="true"
+        ></video>`;
 
       default:
         return html`<a href=${src}>${this.name ? this.name : src}</a>`;

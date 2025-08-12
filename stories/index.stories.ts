@@ -137,6 +137,15 @@ export const Flac: Story = {
   },
 };
 
+export const Mp4: Story = {
+  name: 'video/mp4 (NFTCDN)',
+  args: {
+    src: 'https://asset12afcj56ez9qu9fsvev8jjl9gsa9gpfrpgr7pkm.cardano.nftcdn.io/files/0?tk=ljgemck3kF6SEVERI1j89Jn-eCiVZUIsPGqyt64_eIY',
+    type: 'video/mp4',
+    name: 'BlockOwls Nana',
+  },
+};
+
 export const Unknown: Story = {
   name: 'unknown/type',
   args: {
