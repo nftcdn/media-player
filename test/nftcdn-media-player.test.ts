@@ -17,6 +17,7 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
+  // Properties
   it('can set the media URL via attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
@@ -43,6 +44,14 @@ describe('NftcdnMediaPlayer', () => {
     );
 
     expect(el.name).to.equal('test');
+  });
+
+  it('can set autoplay attribute', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player autoplay="false"></nftcdn-media-player>`,
+    );
+
+    expect(el.autoplay).to.equal('false');
   });
 
   // IPFS
@@ -157,10 +166,10 @@ describe('NftcdnMediaPlayer', () => {
       `<model-viewer
           ar
           auto-rotate
-          autoplay="true"
           camera-controls
           ar-status="not-presenting"
           ar-modes="webxr scene-viewer quick-look"
+          autoplay
       ></model-viewer>`,
       {
         ignoreAttributes: ['src'],
@@ -245,6 +254,7 @@ describe('NftcdnMediaPlayer', () => {
           src="https://ipfs.io/ipfs/QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
           controls
           preload="none"
+          autoplay
       />`,
     );
   });
@@ -271,10 +281,10 @@ describe('NftcdnMediaPlayer', () => {
       `<video
           src="https://ipfs.io/ipfs/QmdzdgKBqpE7sFrWPGmLyL8yD1oo9BHbSafHYSnfaj2C5B"
           controls
-          autoplay="true"
-          muted="true"
           loop="true"
           playsinline="true"
+          autoplay
+          muted="false"
       />`,
     );
   });

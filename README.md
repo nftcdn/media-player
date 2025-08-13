@@ -31,13 +31,14 @@ npm i nftcdn-media-player
 
 ### Attributes
 
-| Name            | Requirement                                                                       | Default             | Description                                                                       |
-| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :-------------------------------------------------------------------------------- |
-| `src`           | mandatory                                                                         | undefined           | media URL                                                                         |
+| Name            | Requirement                                                                       | Default             | Description |
+| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :---------- |
+| `src`           | mandatory                                                                         | undefined           | media URL |
 | `type`          | mandatory except for images                                                       | undefined           | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml) |
-| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name                                                                 |
-| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway                                                                      |
-| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway                                                                   |
+| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name |
+| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway |
+| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway |
+| `autoplay`      | optional                                                                          | true                | Play automatically. Supported by audio, video and gltf media. Implies `muted` when enabled for videos. |
 
 \* JavaScript properties are `ipfsGateway` and `arGateway`.
 

@@ -125,6 +125,7 @@ export const Mp3: Story = {
     src: 'ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3',
     type: 'audio/mpeg',
     name: 'Rain of Hearts - Run',
+    autoplay: true,
   },
 };
 
@@ -143,6 +144,7 @@ export const Mp4: Story = {
     src: 'https://asset12afcj56ez9qu9fsvev8jjl9gsa9gpfrpgr7pkm.cardano.nftcdn.io/files/0?tk=ljgemck3kF6SEVERI1j89Jn-eCiVZUIsPGqyt64_eIY',
     type: 'video/mp4',
     name: 'BlockOwls Nana',
+    autoplay: false,
   },
 };
 
