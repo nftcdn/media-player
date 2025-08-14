@@ -5,15 +5,13 @@ This is a generic media viewer/player [web component](https://www.webcomponents.
 It supports the following media:
 
 - Images
-- Videos (upcoming)
-- Audio files (upcoming)
+- Videos
+- Audio files
 - Web documents (HTML/Javascript/Css)
+- PDF and plain text documents
 - 3D models
-- PDF documents (upcoming)
 
 ## Installation
-
-Once version 1.0 is released, installation with npm will be supported with
 
 ```bash
 npm i nftcdn-media-player
@@ -51,14 +49,12 @@ npm i nftcdn-media-player
 ### Supported media types
 
 - `image/*`: formats supported by browsers `<img>` element
-- `text/html`: HTML/Javascript/Css versions supported by browsers
-- `model/gltf+json, model/gltf-binary`: versions supported by [`<model-viewer>`](https://modelviewer.dev/)
-
-### Planned media types
-
 - `video/*`: formats supported by browsers `<video>` element
 - `audio/*`: formats supported by browsers `<audio>` element
-- `application/pdf`: versions supported by [PDF.js](https://mozilla.github.io/pdf.js/)
+- `text/html`: HTML/Javascript/Css versions supported by browsers
+- `application/pdf`: using browsers native PDF viewer
+- `text/plain`
+- `model/gltf+json, model/gltf-binary`: versions supported by [`<model-viewer>`](https://modelviewer.dev/)
 
 ## Demoing with Storybook
 
