@@ -116,6 +116,7 @@ export const Wav: Story = {
     src: 'https://asset1yzm65ncsv6kafcnlusxfx05wjr2edradpjyu97.cardano.nftcdn.io/files/3?tk=zkr5qig7C2VFKidFaA8e0t3-v7qKf0UAgNg6GjlpPLY',
     type: 'audio/wav',
     name: 'Frigid Optics - Ouroboros',
+    autoplay: true,
   },
 };
 
@@ -135,6 +136,7 @@ export const Flac: Story = {
     src: 'https://asset1rqfpkpyfwe9xwlpuj56rh9gte56z3xjnte7xyl.cardano.nftcdn.io/files/4/?tk=U3FgweTMCB6Dnz8zmbOxVZrRCnekkaKdNMSkLkLLDEM',
     type: 'audio/mpeg',
     name: 'DJ Zero Action - Dreamskater',
+    autoplay: true,
   },
 };
 
@@ -144,7 +146,7 @@ export const Mp4: Story = {
     src: 'https://asset12afcj56ez9qu9fsvev8jjl9gsa9gpfrpgr7pkm.cardano.nftcdn.io/files/0?tk=ljgemck3kF6SEVERI1j89Jn-eCiVZUIsPGqyt64_eIY',
     type: 'video/mp4',
     name: 'BlockOwls Nana',
-    autoplay: false,
+    autoplay: true,
   },
 };
 
