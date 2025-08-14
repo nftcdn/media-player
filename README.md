@@ -48,9 +48,9 @@ npm i nftcdn-media-player
 
 ### Supported media types
 
-- `image/*`: formats supported by browsers `<img>` element
-- `video/*`: formats supported by browsers `<video>` element
-- `audio/*`: formats supported by browsers `<audio>` element
+- `image/*`: `<img>` element [browsers supported formats](https://caniuse.com/?search=image%20format)
+- `video/*`: `<video>` element [browsers supported formats](https://caniuse.com/?search=video%20format)
+- `audio/*`: `<audio>` element [browsers supported formats](https://caniuse.com/?search=audio%20format)
 - `text/html`: HTML/Javascript/Css versions supported by browsers
 - `application/pdf`: using browsers native PDF viewer
 - `text/plain`
