@@ -131,7 +131,7 @@ export const Mp3: Story = {
 };
 
 export const Flac: Story = {
-  name: 'audio/x-flag (NFTCDN)',
+  name: 'audio/x-flac (NFTCDN)',
   args: {
     src: 'https://asset1rqfpkpyfwe9xwlpuj56rh9gte56z3xjnte7xyl.cardano.nftcdn.io/files/4/?tk=U3FgweTMCB6Dnz8zmbOxVZrRCnekkaKdNMSkLkLLDEM',
     type: 'audio/mpeg',
