@@ -159,7 +159,7 @@ export class NftcdnMediaPlayer extends LitElement {
           src=${src}
           controls
           ?autoplay=${this.autoplay}
-          muted=${!this.autoplay}
+          muted=${this.autoplay}
           loop="true"
           playsinline="true"
         ></video>`;
