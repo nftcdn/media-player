@@ -48,10 +48,10 @@ describe('NftcdnMediaPlayer', () => {
 
   it('can set autoplay attribute', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
-      html`<nftcdn-media-player autoplay="false"></nftcdn-media-player>`,
+      html`<nftcdn-media-player autoplay></nftcdn-media-player>`,
     );
 
-    expect(el.autoplay).to.equal('false');
+    expect(el.autoplay).to.equal(true);
   });
 
   // IPFS
@@ -254,7 +254,6 @@ describe('NftcdnMediaPlayer', () => {
           src="https://ipfs.io/ipfs/QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
           controls
           preload="none"
-          autoplay
       />`,
     );
   });
@@ -281,10 +280,8 @@ describe('NftcdnMediaPlayer', () => {
       `<video
           src="https://ipfs.io/ipfs/QmdzdgKBqpE7sFrWPGmLyL8yD1oo9BHbSafHYSnfaj2C5B"
           controls
-          loop="true"
-          playsinline="true"
-          autoplay
-          muted="false"
+          loop
+          playsinline
       />`,
     );
   });

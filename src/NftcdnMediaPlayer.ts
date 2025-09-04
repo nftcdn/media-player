@@ -24,7 +24,7 @@ export class NftcdnMediaPlayer extends LitElement {
 
   @property({ type: String }) arGateway: string = 'https://arweave.net';
 
-  @property({ type: String }) autoplay: boolean = true;
+  @property({ type: Boolean }) autoplay: boolean = false;
 
   static styles = css`
     img {
@@ -131,7 +131,7 @@ export class NftcdnMediaPlayer extends LitElement {
           src=${src}
           ar
           auto-rotate
-          ?autoplay=${this.autoplay}
+          autoplay
           camera-controls
           ar-status="not-presenting"
           ar-modes="webxr scene-viewer quick-look"
@@ -158,10 +158,10 @@ export class NftcdnMediaPlayer extends LitElement {
         return html`<video
           src=${src}
           controls
+          loop
+          playsinline
           ?autoplay=${this.autoplay}
-          muted=${this.autoplay}
-          loop="true"
-          playsinline="true"
+          ?muted=${this.autoplay}
         ></video>`;
 
       default:

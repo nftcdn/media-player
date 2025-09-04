@@ -36,7 +36,7 @@ npm i nftcdn-media-player
 | `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name |
 | `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway |
 | `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway |
-| `autoplay`      | optional                                                                          | true                | Play automatically. Supported by audio, video and gltf media. Implies `muted` when enabled for videos. |
+| `autoplay`      | optional                                                                          | true                | Play automatically. Supported by audio and video media. Implies `muted` when enabled for videos. |
 
 \* JavaScript properties are `ipfsGateway` and `arGateway`.
 
