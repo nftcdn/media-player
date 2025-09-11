@@ -27,47 +27,28 @@ export class NftcdnMediaPlayer extends LitElement {
   @property({ type: Boolean }) autoplay: boolean = false;
 
   static styles = css`
-    img {
+    :host {
+      display: flex;
       width: 100%;
       height: 100%;
-      object-fit: contain;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
+    :host([hidden]) {
+      display: none;
     }
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      padding: 0;
-      margin: 0;
-      white-space: normal;
-    }
-    object {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
-    audio {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
+    img,
+    iframe,
+    model-viewer,
+    object,
+    audio,
     video {
       width: 100%;
       height: 100%;
       border: 0;
       padding: 0;
       margin: 0;
+    }
+    img {
+      object-fit: contain;
     }
   `;
 
@@ -116,10 +97,11 @@ export class NftcdnMediaPlayer extends LitElement {
 
     switch (type) {
       case 'image':
-        return html`<img src=${src} alt=${ifDefined(this.name)} />`;
+        return html`<img part="img" src=${src} alt=${ifDefined(this.name)} />`;
 
       case 'html':
         return html`<iframe
+          part="iframe"
           src=${src}
           title=${ifDefined(this.name)}
           sandbox="allow-scripts allow-downloads allow-same-origin"
@@ -128,6 +110,7 @@ export class NftcdnMediaPlayer extends LitElement {
 
       case 'gltf':
         return html`<model-viewer
+          part="model-viewer"
           src=${src}
           ar
           auto-rotate
@@ -140,14 +123,16 @@ export class NftcdnMediaPlayer extends LitElement {
       case 'pdf':
       case 'text':
         return html`<object
+          part="object"
           data=${src}
-          type=${this.type}
+          type=${ifDefined(this.type)}
           name=${ifDefined(this.name)}
           aria-label=${ifDefined(this.name)}
         ></object>`;
 
       case 'audio':
         return html`<audio
+          part="audio"
           src=${src}
           controls
           preload="none"
@@ -156,6 +141,7 @@ export class NftcdnMediaPlayer extends LitElement {
 
       case 'video':
         return html`<video
+          part="video"
           src=${src}
           controls
           loop
@@ -165,7 +151,7 @@ export class NftcdnMediaPlayer extends LitElement {
         ></video>`;
 
       default:
-        return html`<a href=${src}>${this.name ? this.name : src}</a>`;
+        return html`<a part="a" href=${src}>${this.name || src}</a>`;
     }
   }
 }

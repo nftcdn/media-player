@@ -7,24 +7,31 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <style>
-      body {
+      html,
+      body,
+      #demo {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      nftcdn-media-player::part(img) {
         background-color: black;
       }
     </style>
   </head>
   <body>
     <div id="demo"></div>
-
     <script type="module">
       import { html, render } from 'lit';
       import '../dist/src/nftcdn-media-player.js';
 
       render(
-        html`
-          <nftcdn-media-player
-            src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
-          ></nftcdn-media-player>
-        `,
+        html`<nftcdn-media-player
+          src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
+        ></nftcdn-media-player>`,
         document.querySelector('#demo'),
       );
     </script>
