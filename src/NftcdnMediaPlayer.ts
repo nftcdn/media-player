@@ -52,6 +52,17 @@ export class NftcdnMediaPlayer extends LitElement {
     }
   `;
 
+  protected dispatch(event: Event) {
+    const reEvent = new CustomEvent(event.type, {
+      bubbles: event.bubbles,
+      composed: true,
+      cancelable: event.cancelable,
+      detail: event,
+    });
+
+    this.dispatchEvent(reEvent);
+  }
+
   protected mediaType(): MediaType {
     const type = this.type ? this.type.trim() : undefined;
 
@@ -97,15 +108,23 @@ export class NftcdnMediaPlayer extends LitElement {
 
     switch (type) {
       case 'image':
-        return html`<img part="img" src=${src} alt=${ifDefined(this.name)} />`;
+        return html`<img
+          part="img"
+          src=${src}
+          alt=${ifDefined(this.name)}
+          @load=${(e: Event) => this.dispatch(e)}
+          @error=${(e: Event) => this.dispatch(e)}
+        />`;
 
       case 'html':
         return html`<iframe
           part="iframe"
           src=${src}
           title=${ifDefined(this.name)}
-          sandbox="allow-scripts allow-downloads allow-same-origin"
+          sandbox="allow-scripts allow-downloads"
           allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
+          @load=${(e: Event) => this.dispatch(e)}
+          @error=${(e: Event) => this.dispatch(e)}
         ></iframe>`;
 
       case 'gltf':
@@ -118,6 +137,8 @@ export class NftcdnMediaPlayer extends LitElement {
           camera-controls
           ar-status="not-presenting"
           ar-modes="webxr scene-viewer quick-look"
+          @load=${(e: Event) => this.dispatch(e)}
+          @error=${(e: Event) => this.dispatch(e)}
         ></model-viewer>`;
 
       case 'pdf':
@@ -128,6 +149,8 @@ export class NftcdnMediaPlayer extends LitElement {
           type=${ifDefined(this.type)}
           name=${ifDefined(this.name)}
           aria-label=${ifDefined(this.name)}
+          @load=${(e: Event) => this.dispatch(e)}
+          @error=${(e: Event) => this.dispatch(e)}
         ></object>`;
 
       case 'audio':
@@ -137,6 +160,7 @@ export class NftcdnMediaPlayer extends LitElement {
           controls
           preload="none"
           ?autoplay=${this.autoplay}
+          @error=${(e: Event) => this.dispatch(e)}
         ></audio>`;
 
       case 'video':
@@ -148,6 +172,7 @@ export class NftcdnMediaPlayer extends LitElement {
           playsinline
           ?autoplay=${this.autoplay}
           ?muted=${this.autoplay}
+          @error=${(e: Event) => this.dispatch(e)}
         ></video>`;
 
       default:

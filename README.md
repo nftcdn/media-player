@@ -56,19 +56,54 @@ npm i nftcdn-media-player
 - `text/plain`
 - `model/gltf+json, model/gltf-binary`: versions supported by [`<model-viewer>`](https://modelviewer.dev/)
 
+### Underlying elements
+
+The following underlying elements are used:
+
+| Type  | Element          |
+| :---- | :--------------- |
+| image | `<img>`          |
+| video | `<video>`        |
+| audio | `<audio>`        |
+| html  | `<iframe>`       |
+| pdf   | `<object>`       |
+| text  | `<object>`       |
+| gltf  | `<model-viewer>` |
+
+### Events
+
+The following events are supported by the `<nftcdn-media-playezr>` custom element when the [underlying element](#underlying-elements) used supports them:
+
+| Event | Description                                   |
+| :---- | :-------------------------------------------- |
+| load  | Fires when the media has successfully loaded. |
+| error | Fires when the media failed to load.              |
+
+The original event from the underlying element is stored in the custom event `detail` property.
+
+Example:
+
+```html
+<nftcdn-media-player
+  src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
+  onload="console.log('loaded', event.detail)"
+  onerror="console.log('error', event.detail)"
+></nftcdn-media-player>
+```
+
 ### Styling and CSS
 
 All the component parts can be styled using CSS `::part` pseudo element:
 
-| Type  | CSS Selector                                              | Element          |
-| :---- | :-------------------------------------------------------- | :--------------- |
-| image | nftcdn-media-player::part(img)                            | `<img>`          |
-| video | nftcdn-media-player::part(video)                          | `<video>`        |
-| audio | nftcdn-media-player::part(audio)                          | `<audio>`        |
-| html  | nftcdn-media-player::part(iframe)                         | `<iframe>`       |
-| pdf   | nftcdn-media-player[type="application/pdf"]::part(object) | `<object>`       |
-| text  | nftcdn-media-player[type="text/plain"]::part(object)      | `<object>`       |
-| gltf  | nftcdn-media-player::part(model-viewer)                   | `<model-viewer>` |
+| Type  | CSS Selector                                              |
+| :---- | :-------------------------------------------------------- |
+| image | nftcdn-media-player::part(img)                            |
+| video | nftcdn-media-player::part(video)                          |
+| audio | nftcdn-media-player::part(audio)                          |
+| html  | nftcdn-media-player::part(iframe)                         |
+| pdf   | nftcdn-media-player[type="application/pdf"]::part(object) |
+| text  | nftcdn-media-player[type="text/plain"]::part(object)      |
+| gltf  | nftcdn-media-player::part(model-viewer)                   |
 
 For example, to change the way images fill the viewer container:
 

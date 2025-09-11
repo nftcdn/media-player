@@ -31,6 +31,8 @@
       render(
         html`<nftcdn-media-player
           src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
+          onload="console.log('loaded', event.detail)"
+          onerror="console.log('error', event.detail)"
         ></nftcdn-media-player>`,
         document.querySelector('#demo'),
       );
