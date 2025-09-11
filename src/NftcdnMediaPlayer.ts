@@ -116,7 +116,7 @@ export class NftcdnMediaPlayer extends LitElement {
 
     switch (type) {
       case 'image':
-        return html`<image src=${src} alt=${ifDefined(this.name)} />`;
+        return html`<img src=${src} alt=${ifDefined(this.name)} />`;
 
       case 'html':
         return html`<iframe
