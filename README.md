@@ -29,13 +29,13 @@ npm i nftcdn-media-player
 
 ### Attributes
 
-| Name            | Requirement                                                                       | Default             | Description |
-| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :---------- |
-| `src`           | mandatory                                                                         | undefined           | media URL |
-| `type`          | mandatory except for images                                                       | undefined           | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml) |
-| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name |
-| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway |
-| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway |
+| Name            | Requirement                                                                       | Default             | Description                                                                                      |
+| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :----------------------------------------------------------------------------------------------- |
+| `src`           | mandatory                                                                         | undefined           | media URL                                                                                        |
+| `type`          | mandatory except for images                                                       | undefined           | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml)                |
+| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name                                                                                |
+| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway                                                                                     |
+| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway                                                                                  |
 | `autoplay`      | optional                                                                          | true                | Play automatically. Supported by audio and video media. Implies `muted` when enabled for videos. |
 
 \* JavaScript properties are `ipfsGateway` and `arGateway`.
@@ -55,6 +55,30 @@ npm i nftcdn-media-player
 - `application/pdf`: using browsers native PDF viewer
 - `text/plain`
 - `model/gltf+json, model/gltf-binary`: versions supported by [`<model-viewer>`](https://modelviewer.dev/)
+
+### Styling and CSS
+
+All the component parts can be styled using CSS `::part` pseudo element:
+
+| Type  | CSS Selector                                              | Element          |
+| :---- | :-------------------------------------------------------- | :--------------- |
+| image | nftcdn-media-player::part(img)                            | `<img>`          |
+| video | nftcdn-media-player::part(video)                          | `<video>`        |
+| audio | nftcdn-media-player::part(audio)                          | `<audio>`        |
+| html  | nftcdn-media-player::part(iframe)                         | `<iframe>`       |
+| pdf   | nftcdn-media-player[type="application/pdf"]::part(object) | `<object>`       |
+| text  | nftcdn-media-player[type="text/plain"]::part(object)      | `<object>`       |
+| gltf  | nftcdn-media-player::part(model-viewer)                   | `<model-viewer>` |
+
+For example, to change the way images fill the viewer container:
+
+```html
+<style>
+  nftcdn-media-player::part(img) {
+    object-fit: fill;
+  }
+</style>
+```
 
 ## Demoing with Storybook
 
