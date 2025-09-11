@@ -11,6 +11,12 @@ It supports the following media:
 - PDF and plain text documents
 - 3D models
 
+And features:
+
+- IPFS & Arweave URLs support (including gateway setting)
+- Data URLs support (for example used in on-chain NFTs)
+- Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
+
 ## Installation
 
 ```bash
@@ -39,12 +45,6 @@ npm i nftcdn-media-player
 | `autoplay`      | optional                                                                          | true                | Play automatically. Supported by audio and video media. Implies `muted` when enabled for videos. |
 
 \* JavaScript properties are `ipfsGateway` and `arGateway`.
-
-## Features
-
-- IPFS & Arweave URLs support (including gateway setting)
-- Data URLs support (for example used in on-chain NFTs)
-- Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
 
 ### Supported media types
 
