@@ -167,7 +167,7 @@ describe('NftcdnMediaPlayer', () => {
       `<iframe
           part="iframe"
           src="data:text/html,%3Chtml%3EHello%3C%2Fhtml%3E"
-          sandbox="allow-scripts allow-downloads allow-same-origin"
+          sandbox="allow-scripts allow-downloads"
           allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
       ></iframe>`,
     );
