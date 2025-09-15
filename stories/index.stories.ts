@@ -114,6 +114,8 @@ export const Wav: Story = {
   name: 'audio/wav (NFTCDN)',
   args: {
     src: 'https://asset1yzm65ncsv6kafcnlusxfx05wjr2edradpjyu97.cardano.nftcdn.io/files/3?tk=zkr5qig7C2VFKidFaA8e0t3-v7qKf0UAgNg6GjlpPLY',
+    poster:
+      'https://asset1yzm65ncsv6kafcnlusxfx05wjr2edradpjyu97.cardano.nftcdn.io/preview?size=1024&tk=cRsN0q1TULlT39avD_8rYGXRFx7Fj9fj4wk59jRV5_s',
     type: 'audio/wav',
     name: 'Frigid Optics - Ouroboros',
     autoplay: true,
@@ -124,6 +126,7 @@ export const Mp3: Story = {
   name: 'audio/mpeg (IPFS)',
   args: {
     src: 'ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3',
+    poster: 'ipfs://QmW9SnGFDPgeWLnk8Zv1Kzqz3RWYq3SKAB2JC9kXUfZXxq',
     type: 'audio/mpeg',
     name: 'Rain of Hearts - Run',
     autoplay: true,
@@ -133,9 +136,11 @@ export const Mp3: Story = {
 export const Flac: Story = {
   name: 'audio/x-flac (NFTCDN)',
   args: {
-    src: 'https://asset1rqfpkpyfwe9xwlpuj56rh9gte56z3xjnte7xyl.cardano.nftcdn.io/files/4/?tk=U3FgweTMCB6Dnz8zmbOxVZrRCnekkaKdNMSkLkLLDEM',
-    type: 'audio/mpeg',
-    name: 'DJ Zero Action - Dreamskater',
+    src: 'https://asset1zc46maj7mr78uxfu7h7xerm4aux8gmx3j3dlmx.cardano.nftcdn.io/files/0/?tk=GDYpueRC3toV2w2eLHmuLVZrS9fFFZ_6sArTcp4c-lI',
+    poster:
+      'https://asset1zc46maj7mr78uxfu7h7xerm4aux8gmx3j3dlmx.cardano.nftcdn.io/image?size=1024&tk=lu1SmS_-1QEGzyyLVceQ7jkUMfx2v9WdFWiRv0ObdHU',
+    type: 'audio/x-flac',
+    name: 'Daisuke ℗ ADA Ninjaz, Mirai Music, Nstasia',
     autoplay: true,
   },
 };

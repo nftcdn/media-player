@@ -16,6 +16,8 @@ type MediaType =
 export class NftcdnMediaPlayer extends LitElement {
   @property({ type: String }) src: string | undefined = undefined;
 
+  @property({ type: String }) poster: string | undefined = undefined;
+
   @property({ type: String }) type: string | undefined = undefined;
 
   @property({ type: String }) name: string | undefined = undefined;
@@ -90,6 +92,16 @@ export class NftcdnMediaPlayer extends LitElement {
     return 'unknown';
   }
 
+  protected expandUrl(src: string): string {
+    if (src.includes('ipfs')) {
+      return src.replace(/^(ipfs[:/]+)+/, `${this.ipfsGateway}/ipfs/`);
+    }
+    if (src.includes('ar://')) {
+      return src.replace(/ar:\/\//, `${this.arGateway}/`);
+    }
+    return src;
+  }
+
   protected render() {
     if (this.src === undefined) {
       return html`<p>
@@ -97,14 +109,9 @@ export class NftcdnMediaPlayer extends LitElement {
       </p>`;
     }
 
-    let { src } = this;
+    const src = this.expandUrl(this.src);
+    const poster = this.poster ? this.expandUrl(this.poster) : undefined;
     const type = this.mediaType();
-
-    if (src.includes('ipfs')) {
-      src = this.src.replace(/^(ipfs[:/]+)+/, `${this.ipfsGateway}/ipfs/`);
-    } else if (src.includes('ar://')) {
-      src = this.src.replace(/ar:\/\//, `${this.arGateway}/`);
-    }
 
     switch (type) {
       case 'image':
@@ -153,8 +160,8 @@ export class NftcdnMediaPlayer extends LitElement {
           @error=${(e: Event) => this.dispatch(e)}
         ></object>`;
 
-      case 'audio':
-        return html`<audio
+      case 'audio': {
+        const audio = html`<audio
           part="audio"
           src=${src}
           controls
@@ -162,6 +169,16 @@ export class NftcdnMediaPlayer extends LitElement {
           ?autoplay=${this.autoplay}
           @error=${(e: Event) => this.dispatch(e)}
         ></audio>`;
+        if (poster) {
+          return html`<style>
+              :host {
+                background-image: url(${poster});
+                background-size: cover;
+              }</style
+            >${audio}`;
+        }
+        return audio;
+      }
 
       case 'video':
         return html`<video
@@ -172,6 +189,7 @@ export class NftcdnMediaPlayer extends LitElement {
           playsinline
           ?autoplay=${this.autoplay}
           ?muted=${this.autoplay}
+          poster=${ifDefined(poster)}
           @error=${(e: Event) => this.dispatch(e)}
         ></video>`;
 
