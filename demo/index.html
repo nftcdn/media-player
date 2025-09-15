@@ -6,6 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
+    <script type="module">
+      import '../dist/src/nftcdn-media-player.js';
+    </script>
     <style>
       html,
       body,
@@ -23,19 +26,12 @@
     </style>
   </head>
   <body>
-    <div id="demo"></div>
-    <script type="module">
-      import { html, render } from 'lit';
-      import '../dist/src/nftcdn-media-player.js';
-
-      render(
-        html`<nftcdn-media-player
-          src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
-          onload="console.log('loaded', event.detail)"
-          onerror="console.log('error', event.detail)"
-        ></nftcdn-media-player>`,
-        document.querySelector('#demo'),
-      );
-    </script>
+    <div id="demo">
+      <nftcdn-media-player
+        src="ipfs://bafybeidnye5ohaqjliyriep2huapmgfgzuo7zlaeqe3rv6dxvu5yb46igm"
+        onload="console.log('loaded', event.detail)"
+        onerror="console.log('error', event.detail)"
+      ></nftcdn-media-player>
+    </div>
   </body>
 </html>
