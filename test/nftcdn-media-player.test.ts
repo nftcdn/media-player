@@ -208,6 +208,7 @@ describe('NftcdnMediaPlayer', () => {
 
   // glTF 3D models
   it('renders glTF 3D models', async () => {
+    await import('@google/model-viewer');
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
         src="ipfs://QmQHcmcHvdXnWY3eAM3EkxcB8YoayAMrhx7XEhC2DdgBdV"

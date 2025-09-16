@@ -25,7 +25,10 @@
     "storybook:build": "tsc && npm run analyze -- --exclude dist && storybook build"
   },
   "dependencies": {
-    "lit": "^3.1.4"
+    "@google/model-viewer": "^4.1.0",
+    "@lit/task": "^1.0.3",
+    "lit": "^3.1.4",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

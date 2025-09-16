@@ -1,7 +1,7 @@
 import { html, LitElement, css } from 'lit';
 import { property } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import 'https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js';
+import { Task } from '@lit/task';
 
 type MediaType =
   | 'image'
@@ -53,6 +53,16 @@ export class NftcdnMediaPlayer extends LitElement {
       object-fit: contain;
     }
   `;
+
+  // Asynchronous on-demand model viewer loading
+  private _modelViewerTask = new Task(this, {
+    task: async ([type]) => {
+      if (type?.startsWith('model/')) {
+        await import('@google/model-viewer');
+      }
+    },
+    args: () => [this.type],
+  });
 
   protected dispatch(event: Event) {
     const reEvent = new CustomEvent(event.type, {
@@ -134,8 +144,8 @@ export class NftcdnMediaPlayer extends LitElement {
           @error=${(e: Event) => this.dispatch(e)}
         ></iframe>`;
 
-      case 'gltf':
-        return html`<model-viewer
+      case 'gltf': {
+        const viewer = html`<model-viewer
           part="model-viewer"
           src=${src}
           ar
@@ -147,6 +157,12 @@ export class NftcdnMediaPlayer extends LitElement {
           @load=${(e: Event) => this.dispatch(e)}
           @error=${(e: Event) => this.dispatch(e)}
         ></model-viewer>`;
+
+        return this._modelViewerTask.render({
+          pending: () => viewer,
+          complete: () => viewer,
+        });
+      }
 
       case 'pdf':
       case 'text':
