@@ -121,7 +121,7 @@ export class NftcdnMediaPlayer extends LitElement {
         return this.renderHtml(src);
 
       case 'gltf':
-        return this.render3dModel(src);
+        return this.render3dModel(src, poster);
 
       case 'pdf':
       case 'text':
@@ -160,10 +160,12 @@ export class NftcdnMediaPlayer extends LitElement {
     ></iframe>`;
   }
 
-  protected render3dModel(src: string) {
+  protected render3dModel(src: string, poster: string | undefined) {
     const viewer = html`<model-viewer
       part="model-viewer"
       src=${src}
+      alt=${ifDefined(this.name)}
+      poster=${ifDefined(poster)}
       ar
       auto-rotate
       autoplay

@@ -36,15 +36,15 @@ npm i nftcdn-media-player
 
 ### Attributes
 
-| Name            | Requirement                                                                       | Default             | Description                                                                                      |
-| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :----------------------------------------------------------------------------------------------- |
-| `src`           | mandatory                                                                         | undefined           | media URL                                                                                        |
-| `type`          | mandatory except for images                                                       | undefined           | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml)                |
-| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name                                                                                |
-| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway                                                                                     |
-| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway                                                                                  |
-| `autoplay`      | optional                                                                          | false               | Play automatically. Supported by audio and video media. Implies `muted` when enabled for videos. |
-| `poster`        | optional                                                                          | undefined           | Optional poster for audio player (always displayed) and video player (during loading only).     |
+| Name            | Requirement                                                                       | Default             | Description                                                                                           |
+| :-------------- | :-------------------------------------------------------------------------------- | :------------------ | :---------------------------------------------------------------------------------------------------- |
+| `src`           | mandatory                                                                         | undefined           | media URL                                                                                             |
+| `type`          | mandatory except for images                                                       | undefined           | [media/mime type](https://www.iana.org/assignments/media-types/media-types.xhtml)                     |
+| `name`          | required for [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) compliance | undefined           | unique media name                                                                                     |
+| `ipfsgateway`\* | optional                                                                          | https://ipfs.io     | IPFS gateway                                                                                          |
+| `argateway`\*   | optional                                                                          | https://arweave.net | Arweave gateway                                                                                       |
+| `autoplay`      | optional                                                                          | false               | Play automatically. Supported by audio and video media. Implies `muted` when enabled for videos.      |
+| `poster`        | optional                                                                          | undefined           | Optional poster for audio player (always displayed), 3d model and video player (during loading only). |
 
 \* JavaScript properties are `ipfsGateway` and `arGateway`.
 

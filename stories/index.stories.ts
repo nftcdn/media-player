@@ -88,6 +88,7 @@ export const GltfBinary: Story = {
   args: {
     src: 'https://asset1dszryl629g5d8vxzz2wad3wjwuv5hqkajekd3x.cardano.nftcdn.io/files/0/?tk=9RDUTiJ-6uOaEnxrg5e44smGPVb2beJWp3uvuM1KyiU',
     type: 'model/gltf-binary',
+    poster: 'ipfs://QmNug6PfDiXnyx32FU5XoRe9SHyEKGHTMMvu1QA14UKsGQ',
     name: 'Knitties Sudo cNFTcon2021 #0099',
   },
 };
