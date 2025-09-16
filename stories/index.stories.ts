@@ -4,12 +4,6 @@ import '../src/nftcdn-media-player.js';
 const meta: Meta = {
   title: 'NftcdnMediaPlayer',
   component: 'nftcdn-media-player',
-  parameters: {
-    layout: 'fullscreen',
-    backgrounds: {
-      default: 'dark',
-    },
-  },
 };
 
 export default meta;
