@@ -381,6 +381,29 @@ describe('NftcdnMediaPlayer', () => {
     );
   });
 
+  it('renders audio files with a poster', async () => {
+    const el = await fixture<NftcdnMediaPlayer>(
+      html`<nftcdn-media-player
+        src="ipfs://QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
+        type="audio/mpeg"
+        poster="ipfs://QmW9SnGFDPgeWLnk8Zv1Kzqz3RWYq3SKAB2JC9kXUfZXxq"
+      ></nftcdn-media-player>`,
+    );
+    expect(el).shadowDom.to.equal(
+      `<audio
+          part="audio"
+          src="https://ipfs.io/ipfs/QmUPFUgg7zGWXfKEa5uEpg38QwsgjMuizXS4XkUkGV341H/1%20-%20run.mp3"
+          controls
+          preload="none"
+      />`,
+    );
+    expect(
+      window.getComputedStyle(el).getPropertyValue('background-image'),
+    ).to.equal(
+      'url("https://ipfs.io/ipfs/QmW9SnGFDPgeWLnk8Zv1Kzqz3RWYq3SKAB2JC9kXUfZXxq")',
+    );
+  });
+
   it('passes the a11y audit with audio files', async () => {
     const el = await fixture<NftcdnMediaPlayer>(
       html`<nftcdn-media-player
