@@ -54,16 +54,6 @@ export class NftcdnMediaPlayer extends LitElement {
     }
   `;
 
-  // Asynchronous on-demand model viewer loading
-  private _modelViewerTask = new Task(this, {
-    task: async ([type]) => {
-      if (type?.startsWith('model/')) {
-        await import('@google/model-viewer');
-      }
-    },
-    args: () => [this.type],
-  });
-
   protected dispatch(event: Event) {
     const reEvent = new CustomEvent(event.type, {
       bubbles: event.bubbles,
@@ -125,92 +115,124 @@ export class NftcdnMediaPlayer extends LitElement {
 
     switch (type) {
       case 'image':
-        return html`<img
-          part="img"
-          src=${src}
-          alt=${ifDefined(this.name)}
-          @load=${(e: Event) => this.dispatch(e)}
-          @error=${(e: Event) => this.dispatch(e)}
-        />`;
+        return this.renderImage(src);
 
       case 'html':
-        return html`<iframe
-          part="iframe"
-          src=${src}
-          title=${ifDefined(this.name)}
-          sandbox="allow-scripts allow-downloads"
-          allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
-          @load=${(e: Event) => this.dispatch(e)}
-          @error=${(e: Event) => this.dispatch(e)}
-        ></iframe>`;
+        return this.renderHtml(src);
 
-      case 'gltf': {
-        const viewer = html`<model-viewer
-          part="model-viewer"
-          src=${src}
-          ar
-          auto-rotate
-          autoplay
-          camera-controls
-          ar-status="not-presenting"
-          ar-modes="webxr scene-viewer quick-look"
-          @load=${(e: Event) => this.dispatch(e)}
-          @error=${(e: Event) => this.dispatch(e)}
-        ></model-viewer>`;
-
-        return this._modelViewerTask.render({
-          pending: () => viewer,
-          complete: () => viewer,
-        });
-      }
+      case 'gltf':
+        return this.render3dModel(src);
 
       case 'pdf':
       case 'text':
-        return html`<object
-          part="object"
-          data=${src}
-          type=${ifDefined(this.type)}
-          name=${ifDefined(this.name)}
-          aria-label=${ifDefined(this.name)}
-          @load=${(e: Event) => this.dispatch(e)}
-          @error=${(e: Event) => this.dispatch(e)}
-        ></object>`;
+        return this.renderObject(src);
 
-      case 'audio': {
-        const audio = html`<audio
-          part="audio"
-          src=${src}
-          controls
-          preload="none"
-          ?autoplay=${this.autoplay}
-          @error=${(e: Event) => this.dispatch(e)}
-        ></audio>`;
-        if (poster) {
-          return html`<style>
-              :host {
-                background-image: url(${poster});
-                background-size: cover;
-              }</style
-            >${audio}`;
-        }
-        return audio;
-      }
+      case 'audio':
+        return this.renderAudio(src, poster);
 
       case 'video':
-        return html`<video
-          part="video"
-          src=${src}
-          controls
-          loop
-          playsinline
-          ?autoplay=${this.autoplay}
-          ?muted=${this.autoplay}
-          poster=${ifDefined(poster)}
-          @error=${(e: Event) => this.dispatch(e)}
-        ></video>`;
+        return this.renderVideo(src, poster);
 
       default:
         return html`<a part="a" href=${src}>${this.name || src}</a>`;
     }
+  }
+
+  protected renderImage(src: string) {
+    return html`<img
+      part="img"
+      src=${src}
+      alt=${ifDefined(this.name)}
+      @load=${(e: Event) => this.dispatch(e)}
+      @error=${(e: Event) => this.dispatch(e)}
+    />`;
+  }
+
+  protected renderHtml(src: string) {
+    return html`<iframe
+      part="iframe"
+      src=${src}
+      title=${ifDefined(this.name)}
+      sandbox="allow-scripts allow-downloads"
+      allow="geolocation;magnetometer;gyroscope;accelerometer;clipboard-write"
+      @load=${(e: Event) => this.dispatch(e)}
+      @error=${(e: Event) => this.dispatch(e)}
+    ></iframe>`;
+  }
+
+  protected render3dModel(src: string) {
+    const viewer = html`<model-viewer
+      part="model-viewer"
+      src=${src}
+      ar
+      auto-rotate
+      autoplay
+      camera-controls
+      ar-status="not-presenting"
+      ar-modes="webxr scene-viewer quick-look"
+      @load=${(e: Event) => this.dispatch(e)}
+      @error=${(e: Event) => this.dispatch(e)}
+    ></model-viewer>`;
+
+    return this._modelViewerTask.render({
+      pending: () => viewer,
+      complete: () => viewer,
+    });
+  }
+
+  // Dynamic on-demand model viewer loading
+  private _modelViewerTask = new Task(this, {
+    task: async ([type]) => {
+      if (type?.startsWith('model/')) {
+        await import('@google/model-viewer');
+      }
+    },
+    args: () => [this.type],
+  });
+
+  protected renderObject(src: string) {
+    return html`<object
+      part="object"
+      data=${src}
+      type=${ifDefined(this.type)}
+      name=${ifDefined(this.name)}
+      aria-label=${ifDefined(this.name)}
+      @load=${(e: Event) => this.dispatch(e)}
+      @error=${(e: Event) => this.dispatch(e)}
+    ></object>`;
+  }
+
+  protected renderAudio(src: string, poster: string | undefined) {
+    const audio = html`<audio
+      part="audio"
+      src=${src}
+      controls
+      preload="none"
+      ?autoplay=${this.autoplay}
+      @error=${(e: Event) => this.dispatch(e)}
+    ></audio>`;
+    if (poster) {
+      return html`<style>
+          :host {
+            background-image: url(${poster});
+            background-size: cover;
+          }</style
+        >${audio}`;
+    }
+    return audio;
+  }
+
+  protected renderVideo(src: string, poster: string | undefined) {
+    return html`<video
+      part="video"
+      src=${src}
+      controls
+      loop
+      playsinline
+      ?autoplay=${this.autoplay}
+      ?muted=${this.autoplay}
+      poster=${ifDefined(poster)}
+      @error=${(e: Event) => this.dispatch(e)}
+    ></video>`;
   }
 }
