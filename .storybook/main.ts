@@ -1,8 +1,12 @@
-import type { StorybookConfig } from '@web/storybook-framework-web-components';
+import type { StorybookConfig } from '@storybook/web-components-vite';
 
 const config: StorybookConfig = {
   // Required
-  framework: '@web/storybook-framework-web-components',
+  framework: {
+    name: '@storybook/web-components-vite',
+    options: {},
+  },
+  //framework: '@web/storybook-framework-web-components',
   stories: ['../**/dist/stories/*.stories.{js,md,mdx}'],
 
   // Optional
@@ -11,9 +15,7 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   addons: ['@storybook/addon-backgrounds', '@storybook/addon-controls'],
-  docs: {
-    autodocs: 'tag',
-  },
+  docs: {},
 };
 
 export default config;
