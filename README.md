@@ -21,7 +21,7 @@ And features:
 ## Installation
 
 ```bash
-npm i nftcdn-media-player
+npm i @nftcdn/media-player
 ```
 
 ## Usage
