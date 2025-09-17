@@ -28,7 +28,7 @@ npm i nftcdn-media-player
 
 ```html
 <script type="module">
-  import 'nftcdn-media-player/nftcdn-media-player.js';
+  import '@nftcdn/media-player/nftcdn-media-player.js';
 </script>
 
 <nftcdn-media-player src="URL" type="MIME" name="NAME"></nftcdn-media-player>
