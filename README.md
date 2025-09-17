@@ -24,13 +24,26 @@ And features:
 npm i @nftcdn/media-player
 ```
 
-## Usage
+## Import
 
 ```html
 <script type="module">
   import '@nftcdn/media-player/nftcdn-media-player.js';
 </script>
+```
 
+Or from [esm.sh](https://esm.sh) CDN without installation needed:
+
+```html
+<script
+  type="module"
+  src="https://esm.sh/@nftcdn/media-player/nftcdn-media-player.js"
+></script>
+```
+
+## Usage
+
+```html
 <nftcdn-media-player src="URL" type="MIME" name="NAME"></nftcdn-media-player>
 ```
 
