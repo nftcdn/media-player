@@ -3,7 +3,7 @@
   "description": "Media Viewer/Player web component originally designed to display Cardano NFTS",
   "license": "MIT",
   "author": "NFTCDN LTD",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
