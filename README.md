@@ -16,6 +16,7 @@ And features:
 - IPFS & Arweave URLs support (including gateway setting)
 - Data URLs support (for example used in on-chain NFTs)
 - Dynamic 3d model viewer loading only when needed
+- Augmented reality for 3d models on mobile
 - Follows the [open-wc](https://github.com/open-wc/open-wc) recommendation
 
 ## Installation
