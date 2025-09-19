@@ -48,6 +48,8 @@ Or from [esm.sh](https://esm.sh) CDN without installation needed:
 <nftcdn-media-player src="URL" type="MIME" name="NAME"></nftcdn-media-player>
 ```
 
+*Note that this component only works client-side. If your web framework uses SSR, check its documentation to import and use the component client-side only.*
+
 ### Attributes
 
 | Name            | Requirement                                                                       | Default             | Description                                                                                           |
