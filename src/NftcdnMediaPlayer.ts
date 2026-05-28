@@ -62,6 +62,13 @@ export class NftcdnMediaPlayer extends LitElement {
     img.pixelated {
       image-rendering: pixelated;
     }
+    /* Embedded documents (HTML/PDF/text NFTs) must render independently of the
+       host page's color scheme. Inheriting a dark scheme makes the browser
+       paint a wrong (white) backdrop behind otherwise-transparent content. */
+    iframe,
+    object {
+      color-scheme: normal;
+    }
   `;
 
   protected dispatch(event: Event) {
