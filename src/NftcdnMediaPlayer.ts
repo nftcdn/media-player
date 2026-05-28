@@ -1,7 +1,11 @@
 import { html, LitElement, css } from 'lit';
-import { property } from 'lit/decorators.js';
+import { property, state } from 'lit/decorators.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Task } from '@lit/task';
+
+// Images with both natural dimensions at or below this many pixels are treated
+// as pixel art and upscaled without smoothing (image-rendering: pixelated).
+const PIXEL_ART_MAX_SIZE = 256;
 
 type MediaType =
   | 'image'
@@ -28,6 +32,9 @@ export class NftcdnMediaPlayer extends LitElement {
 
   @property({ type: Boolean }) autoplay: boolean = false;
 
+  // Set once an image loads, when it is small enough to be pixel art.
+  @state() private pixelated: boolean = false;
+
   static styles = css`
     :host {
       display: flex;
@@ -51,6 +58,9 @@ export class NftcdnMediaPlayer extends LitElement {
     }
     img {
       object-fit: contain;
+    }
+    img.pixelated {
+      image-rendering: pixelated;
     }
   `;
 
@@ -141,11 +151,21 @@ export class NftcdnMediaPlayer extends LitElement {
   protected renderImage(src: string) {
     return html`<img
       part="img"
+      class=${this.pixelated ? 'pixelated' : ''}
       src=${src}
       alt=${ifDefined(this.name)}
-      @load=${(e: Event) => this.dispatch(e)}
+      @load=${(e: Event) => this.onImageLoad(e)}
       @error=${(e: Event) => this.dispatch(e)}
     />`;
+  }
+
+  private onImageLoad(e: Event) {
+    const { naturalWidth: w, naturalHeight: h } = e.target as HTMLImageElement;
+    // w/h are 0 for images without intrinsic dimensions (e.g. SVGs with no
+    // width/height/viewBox) — those are vector, so never pixelate them.
+    this.pixelated =
+      w > 0 && h > 0 && w <= PIXEL_ART_MAX_SIZE && h <= PIXEL_ART_MAX_SIZE;
+    this.dispatch(e);
   }
 
   protected renderHtml(src: string) {
